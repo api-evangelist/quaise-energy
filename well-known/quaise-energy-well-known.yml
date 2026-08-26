@@ -1,0 +1,32 @@
+generated: '2026-08-26'
+method: probed
+source: live GET of /.well-known/* on every host in apis.yml
+note: >-
+  Quaise Energy publishes no API, so there is no API host to probe beyond the corporate website. Only
+  /.well-known/security.txt is served, and it is an unedited template — see
+  security/quaise-energy-vulnerability-disclosure.yml for the field-level findings. No api-catalog,
+  no OAuth/OIDC metadata, no ai-plugin, no agent card. Every 404 below returned the site's standard
+  21,946-byte Craft CMS 404 page, not a document.
+hosts:
+- host: www.quaise.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: quaise-energy-security.txt
+    content_type: text/plain
+    valid: true
+    note: >-
+      Real RFC 9116 text document, but the required Contact is the placeholder user@example.com and
+      the Policy/Encryption/Acknowledgements URLs it advertises all 404.
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404

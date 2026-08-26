@@ -1,17 +1,30 @@
 aid: quaise-energy
 name: Quaise Energy
-description: 'Quaise Energy is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Quaise Energy is a deep-geothermal energy company and MIT spinout, founded in 2018 by Carlos
+  Araque and Matthew Houde out of a decade of millimeter-wave research by Paul Woskov at the MIT Plasma
+  Science and Fusion Center. Quaise is developing millimeter-wave (MMW) drilling — using a gyrotron to
+  vaporize rather than grind rock — to reach supercritical conditions several kilometers down, where temperatures
+  approach 500 degrees C, and to convert existing fossil-fuel power stations to superhot geothermal baseload.
+  The company drilled 100 meters with the technique at its Central Texas field site in 2025. Quaise is
+  an energy and hardware company: it publishes no developer program, no public API, and no machine-readable
+  API contract. Its only public web application is a levelized-cost-of-energy (LCOE) calculator whose
+  full functionality sits behind an AWS Cognito login.'
 url: https://raw.githubusercontent.com/api-evangelist/quaise-energy/refs/heads/main/apis.yml
+image: https://d19xrwp2bu8dt3.cloudfront.net/general/Quaise-link-img1.png
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-26'
 modified: '2026-08-26'
 tags:
 - Company
+- Energy
+- Geothermal
+- Clean Energy
+- Drilling
+- Deep Tech
+- Climate Tech
+- Hardware
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +32,47 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: VulnerabilityDisclosure
+  url: security/quaise-energy-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/quaise-energy-domain-security.yml
 - type: Website
-  url: https://www.hiive.com/securities/quaise-energy-stock
+  url: https://www.quaise.com/
+- type: Blog
+  url: https://www.quaise.com/news
+- type: TermsOfService
+  url: https://www.quaise.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.quaise.com/privacy-policy
+- type: WellKnown
+  url: well-known/quaise-energy-well-known.yml
+- type: SecurityTxt
+  url: well-known/quaise-energy-security.txt
+- type: LLMsTxt
+  url: llms/quaise-energy-llms.txt
+x-enrichment:
+  date: '2026-08-26'
+  status: minimal
+  artifacts_added: 5
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: 'Quaise Energy sells millimeter-wave drilling hardware and geothermal power, not software: contract
+    discovery found no OpenAPI/GraphQL/MCP/A2A surface on any host, and the only web application (an LCOE
+    calculator) is a client-side React app behind an AWS Cognito login whose shipped bundle still carries
+    a DEV config pointing at a backend host that 404s at every path.'
+  evidence:
+  - url: https://www.quaise.com/openapi.json
+    status: 404
+  - url: https://www.quaise.com/.well-known/api-catalog
+    status: 404
+  - url: https://www.quaise.com/.well-known/agent-card.json
+    status: 404
+  - url: https://www.quaise.com/developers
+    status: 404
+  - url: https://www.quaise.com/.well-known/security.txt
+    status: 200
+  - url: https://quaise-play-research.com/openapi.json
+    status: 404
+  checked: '2026-08-26'
